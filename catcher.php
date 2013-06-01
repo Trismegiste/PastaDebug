@@ -2,15 +2,13 @@
 
 use Trismegiste\Intricate\Visitor\TraceOn;
 
-require_once __DIR__ . '/../../../vendor/autoload.php';
-
 spl_autoload_register(function($class) {
             if ($class == 'Project\Service') {
-                transform_and_eval($class, __DIR__ . '/../Service.php');
+                transform_and_eval($class, __DIR__ . '/Tests/Fixtures/Service.php');
             }
-        });
+        }, true);
 
-require_once __DIR__ . '/bootstrap.php';
+require_once __DIR__ . '/Tests/Fixtures/Tests/bootstrap.php';
 
 function transform_and_eval($class, $filename)
 {
@@ -26,6 +24,6 @@ function transform_and_eval($class, $filename)
 
 function method_call_catcher($obj, $method, $arg = array())
 {
-    echo get_class($obj), '::', $method,PHP_EOL;
+    echo get_class($obj), '::', $method, PHP_EOL;
     return call_user_func_array(array($obj, $method), $arg);
 }
