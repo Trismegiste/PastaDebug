@@ -7,13 +7,14 @@ require_once 'PHPUnit/Autoload.php';
 
 $packageDir = __DIR__ . '/Tests/Fixtures/';
 
+// filled with a traversing of package
 $classToTrack = array(
     'Project\Service' => $packageDir . '/Service.php'
 );
 
 chdir($packageDir);
 $cmd = new PhpUnit\Command($classToTrack);
-$cmd->run(array('-c', $packageDir));
+$cmd->run(array('-c', $packageDir), false);
 
-file_put_contents('resport.txt', PhpUnit\Command::$callLink);
+print_r(PhpUnit\Command::$callLink);
 

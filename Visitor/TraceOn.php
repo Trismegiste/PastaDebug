@@ -7,9 +7,8 @@
 namespace Trismegiste\Intricate\Visitor;
 
 /**
- * TraceOn is ...
- *
- * @author flo
+ * TraceOn is a visitor which catches all method call and redirects to
+ * a global function to trace all calls with type-hinting.
  */
 class TraceOn extends \PHPParser_NodeVisitorAbstract
 {

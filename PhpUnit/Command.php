@@ -38,7 +38,7 @@ class Command extends \PHPUnit_TextUI_Command
     public static function methodCallCatcher($methodCaller, $obj, $method, array $arg = array())
     {
         Command::$callLink[$methodCaller][get_class($obj)][$method] = true;
-        var_dump(Command::$callLink);
+
         return call_user_func_array(array($obj, $method), $arg);
     }
 
