@@ -5,6 +5,7 @@
     <testsuites>
         <testsuite name="Intricate unit and func tests">
             <directory>./Tests</directory>
+            <exclude>./Tests/Fixtures/</exclude>
         </testsuite>
     </testsuites>
 
