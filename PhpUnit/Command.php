@@ -15,6 +15,7 @@ class Command extends \PHPUnit_TextUI_Command
 {
 
     public static $classMap = array();
+    public static $callLink = array();
 
     public function __construct($caughtClasses)
     {
@@ -33,9 +34,10 @@ class Command extends \PHPUnit_TextUI_Command
         eval($newContent);
     }
 
-    public static function methodCallCatcher($obj, $method, $arg = array())
+    public static function methodCallCatcher($caller, $methodCaller, $obj, $method, array $arg = array())
     {
-        echo get_class($obj), '::', $method, PHP_EOL;
+        static::$callLink[$caller][$methodCaller][get_class($obj)][$method] = true;
+        echo $caller, '::', $methodCaller, ' -> ', get_class($obj), '::', $method, PHP_EOL;
         return call_user_func_array(array($obj, $method), $arg);
     }
 
