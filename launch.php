@@ -15,4 +15,5 @@ chdir($packageDir);
 $cmd = new PhpUnit\Command($classToTrack);
 $cmd->run(array('-c', $packageDir));
 
-var_dump(PhpUnit\Command::$callLink);
+file_put_contents('resport.txt', PhpUnit\Command::$callLink);
+

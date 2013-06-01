@@ -31,13 +31,14 @@ class Command extends \PHPUnit_TextUI_Command
         $changed = $traver->traverse($stmt);
         $pp = new \PHPParser_PrettyPrinter_Default();
         $newContent = $pp->prettyPrint($changed);
+//        echo $newContent;
         eval($newContent);
     }
 
-    public static function methodCallCatcher($caller, $methodCaller, $obj, $method, array $arg = array())
+    public static function methodCallCatcher($methodCaller, $obj, $method, array $arg = array())
     {
-        static::$callLink[$caller][$methodCaller][get_class($obj)][$method] = true;
-        echo $caller, '::', $methodCaller, ' -> ', get_class($obj), '::', $method, PHP_EOL;
+        Command::$callLink[$methodCaller][get_class($obj)][$method] = true;
+        var_dump(Command::$callLink);
         return call_user_func_array(array($obj, $method), $arg);
     }
 
