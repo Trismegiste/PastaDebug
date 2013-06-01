@@ -1,0 +1,33 @@
+{
+    "name": "trismegiste/intricate",
+    "description": "Intricate is a set of dynamic analysis and refactoring tools for more abstraction",
+    "type": "CLI",
+    "keywords": ["refactoring", "abstract", "graph", "analysis", "dynamic", "code", "metrics"],
+    "authors": [
+    {
+        "name": "Trismegiste",
+        "email": "florent.g@allopneus.com"
+    }
+    ],
+    "require": {
+        "php": ">=5.3.8",
+        "nikic/php-parser": "dev-master",
+        "symfony/console": "2.2.*",
+        "alom/graphviz": "dev-master",
+        "symfony/finder": "2.2.*",
+        "symfony/yaml": "2.2.*",
+        "symfony/config": "2.2.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Trismegiste\\Intricate\\": ""
+        }
+    },
+    "repositories": [ {
+        "type": "vcs",
+        "url": "git://github.com/Trismegiste/graphviz.git"
+    } ],
+    "target-dir": "Trismegiste/Intricate",
+    "license": "CC-BY-SA-3.0",
+    "version": "0.1"
+}
