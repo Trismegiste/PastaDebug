@@ -4,7 +4,7 @@
  * Intricate
  */
 
-namespace Trismegiste\Intricate\Visitor;
+namespace  Trismegiste\PastaDebug\Visitor;
 
 /**
  * TraceOn is a visitor which catches all method call and redirects to
@@ -29,7 +29,7 @@ class TraceOn extends \PHPParser_NodeVisitorAbstract
                     );
 
                     return new \PHPParser_Node_Expr_StaticCall(
-                            new \PHPParser_Node_Name_FullyQualified('Trismegiste\Intricate\PhpUnit\Command')
+                            new \PHPParser_Node_Name_FullyQualified(' Trismegiste\PastaDebug\PhpUnit\Command')
                             , 'methodCallCatcher'
                             , $newArg
                     );

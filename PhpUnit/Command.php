@@ -4,9 +4,9 @@
  * Intricate
  */
 
-namespace Trismegiste\Intricate\PhpUnit;
+namespace  Trismegiste\PastaDebug\PhpUnit;
 
-use Trismegiste\Intricate\Visitor\TraceOn;
+use  Trismegiste\PastaDebug\Visitor\TraceOn;
 
 /**
  * Command is a wrapper for lauching phpunit

@@ -1,8 +1,8 @@
 {
-    "name": "trismegiste/intricate",
-    "description": "Intricate is a set of dynamic analysis and refactoring tools for more abstraction",
+    "name": "trismegiste/pastadebug",
+    "description": "PastaDebug is a dynamic code analysis tool for Mondrian",
     "type": "CLI",
-    "keywords": ["refactoring", "abstract", "graph", "analysis", "dynamic", "code", "metrics"],
+    "keywords": ["refactoring", "code", "analysis", "dynamic", "debug", "spaghetti"],
     "authors": [
     {
         "name": "Trismegiste",
@@ -13,21 +13,16 @@
         "php": ">=5.3.8",
         "nikic/php-parser": "dev-master",
         "symfony/console": "2.2.*",
-        "alom/graphviz": "dev-master",
         "symfony/finder": "2.2.*",
         "symfony/yaml": "2.2.*",
         "symfony/config": "2.2.*"
     },
     "autoload": {
         "psr-0": {
-            "Trismegiste\\Intricate\\": ""
+            "Trismegiste\\PastaDebug\\": ""
         }
     },
-    "repositories": [ {
-        "type": "vcs",
-        "url": "git://github.com/Trismegiste/graphviz.git"
-    } ],
-    "target-dir": "Trismegiste/Intricate",
+    "target-dir": "Trismegiste/PastaDebug",
     "license": "CC-BY-SA-3.0",
     "version": "0.1"
 }
