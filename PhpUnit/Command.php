@@ -14,6 +14,13 @@ use Trismegiste\Intricate\Visitor\TraceOn;
 class Command extends \PHPUnit_TextUI_Command
 {
 
+    public static $classMap = array();
+
+    public function __construct($caughtClasses)
+    {
+        static::$classMap = $caughtClasses;
+    }
+
     public static function transformAndEval($class, $filename)
     {
         $parser = new \PHPParser_Parser(new \PHPParser_Lexer());
@@ -35,8 +42,8 @@ class Command extends \PHPUnit_TextUI_Command
     protected function handleBootstrap($filename)
     {
         spl_autoload_register(function($class) {
-                    if ($class == 'Project\Service') {
-                        \Trismegiste\Intricate\PhpUnit\Command::transformAndEval($class, __DIR__ . '/../Tests/Fixtures/Service.php');
+                    if (array_key_exists($class, Command::$classMap)) {
+                        Command::transformAndEval($class, Command::$classMap[$class]);
                     }
                 }, true);
 

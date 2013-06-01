@@ -6,8 +6,10 @@ require_once __DIR__ . '/vendor/autoload.php';
 require_once 'PHPUnit/Autoload.php';
 
 $phpUnitConfig = __DIR__ . '/Tests/Fixtures/';
-$fileToTrack = array(__DIR__ . '/Tests/Fixtures/Service.php');
 
+$classToTrack = array(
+    'Project\Service' => __DIR__ . '/Tests/Fixtures/Service.php'
+);
 
-$cmd = new PhpUnit\Command();
+$cmd = new PhpUnit\Command($classToTrack);
 $cmd->run(array('-c', $phpUnitConfig));
