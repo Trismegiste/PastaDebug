@@ -22,11 +22,6 @@ class TraceOn extends \PHPParser_NodeVisitorAbstract
                 array_unshift($args, new \PHPParser_Node_Scalar_String($node->name));
                 array_unshift($args, $node->var);
                 return new \PHPParser_Node_Expr_FuncCall(new \PHPParser_Node_Name('method_call_catcher'), $args);
-                return array(
-                    new \PHPParser_Node_Stmt_Echo(array(new \PHPParser_Node_Scalar_String('toto')))
-                    ,
-                    $node
-                );
                 break;
         }
     }
