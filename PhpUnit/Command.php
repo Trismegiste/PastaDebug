@@ -27,7 +27,7 @@ class Command extends \PHPUnit_TextUI_Command
         $parser = new \PHPParser_Parser(new \PHPParser_Lexer());
         $stmt = $parser->parse(file_get_contents($filename));
         $traver = new \PHPParser_NodeTraverser();
-        $traver->addVisitor(new TraceOn());
+        $traver->addVisitor(new TraceOn($filename));
         $changed = $traver->traverse($stmt);
         $pp = new \PHPParser_PrettyPrinter_Default();
         $newContent = $pp->prettyPrint($changed);
