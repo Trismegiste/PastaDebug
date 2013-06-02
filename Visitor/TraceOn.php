@@ -24,10 +24,8 @@ class TraceOn extends \PHPParser_NodeVisitorAbstract
     {
         switch ($node->getType()) {
 
-            case 'Expr_ConstFetch':
-                if ($node->name == '__DIR__') {
-                    return $this->enterConstThisDir($node);
-                }
+            case 'Scalar_DirConst':
+                return new \PHPParser_Node_Scalar_String(dirname($this->filename));
                 break;
 
             case 'Expr_MethodCall':
@@ -43,7 +41,7 @@ class TraceOn extends \PHPParser_NodeVisitorAbstract
     protected function enterMethodCall(\PHPParser_Node_Expr_MethodCall $node)
     {
         $newArg = array(
-            new \PHPParser_Node_Expr_ConstFetch(new \PHPParser_Node_Name('__METHOD__')),
+            new \PHPParser_Node_Scalar_MethodConst(),
             $node->var,
             new \PHPParser_Node_Scalar_String($node->name),
             new \PHPParser_Node_Expr_Array($node->args)
@@ -54,11 +52,6 @@ class TraceOn extends \PHPParser_NodeVisitorAbstract
                 , 'methodCallCatcher'
                 , $newArg
         );
-    }
-
-    protected function enterConstThisDir(\PHPParser_Node_Expr_ConstFetch $node)
-    {
-        return new \PHPParser_Node_Scalar_String(dirname($this->filename));
     }
 
 }
