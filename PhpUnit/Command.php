@@ -4,9 +4,9 @@
  * Intricate
  */
 
-namespace  Trismegiste\PastaDebug\PhpUnit;
+namespace Trismegiste\PastaDebug\PhpUnit;
 
-use  Trismegiste\PastaDebug\Visitor\TraceOn;
+use Trismegiste\PastaDebug\Visitor\TraceOn;
 
 /**
  * Command is a wrapper for lauching phpunit
@@ -37,7 +37,7 @@ class Command extends \PHPUnit_TextUI_Command
 
     public static function methodCallCatcher($methodCaller, $obj, $method, array $arg = array())
     {
-        Command::$callLink[$methodCaller][get_class($obj)][$method] = true;
+        Command::$callLink[$methodCaller][get_class($obj) . '::' . $method] = true;
 
         return call_user_func_array(array($obj, $method), $arg);
     }

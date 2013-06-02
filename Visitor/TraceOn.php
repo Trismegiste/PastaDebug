@@ -4,7 +4,7 @@
  * Intricate
  */
 
-namespace  Trismegiste\PastaDebug\Visitor;
+namespace Trismegiste\PastaDebug\Visitor;
 
 /**
  * TraceOn is a visitor which catches all method call and redirects to
