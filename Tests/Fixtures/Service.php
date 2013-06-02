@@ -10,6 +10,7 @@ class Service
     public function __construct(\IteratorAggregate $data)
     {
         $this->data = $data->getIterator();
+        $cst = __DIR__;
     }
 
     public function compute()

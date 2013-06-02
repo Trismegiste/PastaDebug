@@ -31,7 +31,7 @@ class Command extends \PHPUnit_TextUI_Command
         $changed = $traver->traverse($stmt);
         $pp = new \PHPParser_PrettyPrinter_Default();
         $newContent = $pp->prettyPrint($changed);
-//        echo $newContent;
+        echo $newContent;
         eval($newContent);
     }
 
