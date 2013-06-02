@@ -31,13 +31,23 @@ class Command extends \PHPUnit_TextUI_Command
         $changed = $traver->traverse($stmt);
         $pp = new \PHPParser_PrettyPrinter_Default();
         $newContent = $pp->prettyPrint($changed);
-        echo $newContent;
+//        echo $newContent;
         eval($newContent);
     }
 
     public static function methodCallCatcher($methodCaller, $obj, $method, array $arg = array())
     {
         Command::$callLink[$methodCaller][get_class($obj) . '::' . $method] = true;
+        $refl = new \ReflectionObject($obj);
+        // managing interfaces : find the one which is implemented
+        foreach ($refl->getInterfaces() as $name => $interf) {
+            if ($interf->hasMethod($method)) {
+                Command::$callLink[$methodCaller][$interf->name . '::' . $method] = true;
+            }
+        }
+        // searching where is actually the called method
+        $actualClass = $refl->getMethod($method)->name;
+        Command::$callLink[$methodCaller][$actualClass . '::' . $method] = true;
 
         return call_user_func_array(array($obj, $method), $arg);
     }
