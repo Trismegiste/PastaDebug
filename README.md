@@ -14,10 +14,12 @@ You need 2 things :
 
  - a PhpUnit libray in the include_path of PHP (PHPUnit will be packaged later)
  - modifying the composer.json of Mondrian :
+
 ```
  $ composer.phar require trismegiste/pastadebug
- $ adding the class Trismegiste\\PastaDebug\\Command\\Refine in the extra->plugins array
 ```
+Adding the class Trismegiste\\PastaDebug\\Command\\Refine in the extra->plugins array
+
 
 ## How
 
